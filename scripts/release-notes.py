@@ -57,7 +57,7 @@ def main(token, repo, num_commits, exclude_dependabot):
 
     # Load commits
     data = urllib.parse.urlencode({'per_page': num_commits})
-    req = Request(commits_url + '?' + data)
+    req = Request(f'{commits_url}?{data}')
     print(req.full_url)
     req.add_header('Authorization', f'token {token}')
     commits = json.loads(urlopen(req).read())
