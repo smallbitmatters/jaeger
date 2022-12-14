@@ -7,13 +7,13 @@ def trace_id_base64(match):
     id = int(match.group(1), 16)
     hex = '%032x' % id
     b64 = base64.b64encode(hex.decode('hex'))
-    return '"traceId": "%s"' % b64
+    return f'"traceId": "{b64}"'
 
 def span_id_base64(match):
     id = int(match.group(1), 16)
     hex = '%016x' % id
     b64 = base64.b64encode(hex.decode('hex'))
-    return '"spanId": "%s"' % b64
+    return f'"spanId": "{b64}"'
 
 for file in sys.argv[1:]:
     print file
